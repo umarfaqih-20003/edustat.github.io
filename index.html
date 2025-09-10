@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduStat - Analisis Data Pendidikan</title>
+    <style>
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4cb5f5;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --info: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover, nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 180px);
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1, h2, h3 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .home-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .home-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+            color: var(--primary);
+        }
+        
+        .initiators {
+            margin-top: 2rem;
+        }
+        
+        .initiator-item {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: var(--secondary);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0.5rem 0;
+        }
+        
+        .stat-label {
+            color: #666;
+        }
+        
+        .priority-list {
+            margin-top: 1.5rem;
+        }
+        
+        .priority-item {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--warning);
+            background: #fff9e6;
+            border-radius: 4px;
+        }
+        
+        .priority-item:nth-child(2) {
+            border-left-color: var(--danger);
+            background: #ffe6e6;
+        }
+        
+        .priority-item:nth-child(3) {
+            border-left-color: var(--info);
+            background: #e6f7ff;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning);
+            color: #856404;
+        }
+        
+        .alert-info {
+            background: #d1ecf1;
+            border-left: 4px solid var(--info);
+            color: #0c5460;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            color: #155724;
+        }
+        
+        .cluster-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .cluster-0 { background: #ffe6e6; color: #dc3545; }
+        .cluster-1 { background: #e6f7ff; color: #17a2b8; }
+        .cluster-2 { background: #d4edda; color: #155724; }
+        
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .input-group {
+            margin-bottom: 1rem;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .result-table th, .result-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .result-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav li {
+                margin: 0;
+            }
+            
+            nav a {
+                display: block;
+                padding: 1rem;
+                border-radius: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <span>EduStat</span>
+                </div>
+                <button class="mobile-menu-btn">☰</button>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#" class="nav-link active" data-page="home">Beranda</a></li>
+                        <li><a href="#" class="nav-link" data-page="analysis">Analisis</a></li>
+                        <li><a href="#" class="nav-link" data-page="centroid">Prediksi</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Halaman Beranda -->
+            <section id="home" class="page active">
+                <div class="home-header">
+                    <span class="home-icon">🏡</span>
+                    <h1>Beranda</h1>
+                </div>
+                
+                <div class="card">
+                    <h2>Aplikasi Prediksi Cluster Provinsi dan Top 3 Policy Based on Data</h2>
+                    <p>
+                        Aplikasi ini dibuat untuk memprediksi klaster provinsi di Indonesia 
+                        dan memberikan 3 Kebijakan yang Harus Diambil 
+                        berdasarkan analisis data beberapa fasilitas pendidikan & sosial-ekonomi.
+                    </p>
+                </div>
+                
+                <div class="card">
+                    <h3>Inisiator dari Universitas Diponegoro:</h3>
+                    <div class="initiators">
+                        <div class="initiator-item">Elsa Ika Rahmani</div>
+                        <div class="initiator-item">Suci Oktaviani</div>
+                        <div class="initiator-item">Umar Faqih</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman Analisis -->
+            <section id="analysis" class="page">
+                <div class="home-header">
+                    <span class="home-icon">📊</span>
+                    <h1>Analisis Decision Tree (Data 2024)</h1>
+                </div>
+                
+                <div class="card">
+                    <div class="input-group">
+                        <label for="provinsi-select">Pilih Provinsi:</label>
+                        <select id="provinsi-select">
+                            <option value="Aceh">Aceh</option>
+                            <option value="Bali">Bali</option>
+                            <option value="Banten">Banten</option>
+                            <option value="Bengkulu">Bengkulu</option>
+                            <option value="DI Yogyakarta">DI Yogyakarta</option>
+                            <option value="DKI Jakarta">DKI Jakarta</option>
+                            <option value="Gorontalo">Gorontalo</option>
+                            <option value="Jambi">Jambi</option>
+                            <option value="Jawa Barat">Jawa Barat</option>
+                            <option value="Jawa Tengah">Jawa Tengah</option>
+                            <option value="Jawa Timur">Jawa Timur</option>
+                            <option value="Kalimantan Barat">Kalimantan Barat</option>
+                            <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                            <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                            <option value="Kalimantan Timur">Kalimantan Timur</option>
+                            <option value="Kalimantan Utara">Kalimantan Utara</option>
+                            <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+                            <option value="Kepulauan Riau">Kepulauan Riau</option>
+                            <option value="Lampung">Lampung</option>
+                            <option value="Maluku">Maluku</option>
+                            <option value="Maluku Utara">Maluku Utara</option>
+                            <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                            <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                            <option value="Papua">Papua</option>
+                            <option value="Papua Barat">Papua Barat</option>
+                            <option value="Riau">Riau</option>
+                            <option value="Sulawesi Barat">Sulawesi Barat</option>
+                            <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                            <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                            <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                            <option value="Sulawesi Utara">Sulawesi Utara</option>
+                            <option value="Sumatera Barat">Sumatera Barat</option>
+                            <option value="Sumatera Selatan">Sumatera Selatan</option>
+                            <option value="Sumatera Utara">Sumatera Utara</option>
+                        </select>
+                    </div>
+                    
+                    <div id="analysis-result">
+                        <div class="alert alert-success">
+                            Silakan pilih provinsi untuk melihat analisisnya.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Halaman Prediksi Centroid -->
+            <section id="centroid" class="page">
+                <div class="home-header">
+                    <span class="home-icon">📍</span>
+                    <h1>Prediksi dengan Distance to Centroid</h1>
+                </div>
+                
+                <div class="card">
+                    <h2>Masukkan Data Provinsi Baru</h2>
+                    
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label for="input-al">Nilai AL (Akses Listrik)</label>
+                            <input type="number" id="input-al" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-ibo">Nilai IBO (Internet Pembelajaran Online)</label>
+                            <input type="number" id="input-ibo" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-rgm">Nilai RGM (Rasio Guru-Murid)</label>
+                            <input type="number" id="input-rgm" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-kg">Nilai KG (Kualitas Guru)</label>
+                            <input type="number" id="input-kg" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-aps">Nilai APS (Angka Partisipasi Sekolah)</label>
+                            <input type="number" id="input-aps" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-k">Nilai K (Kemiskinan)</label>
+                            <input type="number" id="input-k" step="0.001" value="0.0">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="input-gr">Nilai GR (Gini Rasio)</label>
+                            <input type="number" id="input-gr" step="0.001" value="0.0">
+                        </div>
+                    </div>
+                    
+                    <button id="predict-btn">Prediksi Cluster & Kebijakan</button>
+                    
+                    <div id="prediction-result">
+                        <div class="alert alert-info">
+                            Masukkan nilai untuk semua variabel dan klik tombol prediksi.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>EduStat - Aplikasi Analisis Data Pendidikan &copy; 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Data untuk aplikasi
+        const provinsiData = {
+            "Aceh": { AL: -0.8, IBO: -0.5, RGM: 0.2, KG: -0.3, APS: -0.6, K: 1.2, GR: 0.4, Cluster: "1" },
+            "Bali": { AL: 1.2, IBO: 1.5, RGM: 0.8, KG: 1.1, APS: 1.3, K: -0.9, GR: 0.2, Cluster: "2" },
+            "Banten": { AL: 0.9, IBO: 0.7, RGM: 0.5, KG: 0.6, APS: 0.8, K: -0.3, GR: 0.5, Cluster: "2" },
+            "Bengkulu": { AL: -0.5, IBO: -0.7, RGM: -0.2, KG: -0.4, APS: -0.5, K: 0.8, GR: 0.3, Cluster: "1" },
+            "DI Yogyakarta": { AL: 1.1, IBO: 1.3, RGM: 1.0, KG: 1.2, APS: 1.4, K: -1.0, GR: 0.1, Cluster: "2" },
+            "DKI Jakarta": { AL: 1.8, IBO: 1.9, RGM: 1.5, KG: 1.7, APS: 1.8, K: -1.5, GR: 0.6, Cluster: "2" },
+            "Gorontalo": { AL: -0.7, IBO: -0.9, RGM: -0.4, KG: -0.6, APS: -0.7, K: 1.0, GR: 0.4, Cluster: "0" },
+            "Jambi": { AL: -0.3, IBO: -0.4, RGM: 0.0, KG: -0.2, APS: -0.3, K: 0.5, GR: 0.3, Cluster: "1" },
+            "Jawa Barat": { AL: 0.7, IBO: 0.5, RGM: 0.3, KG: 0.4, APS: 0.6, K: -0.2, GR: 0.4, Cluster: "2" },
+            "Jawa Tengah": { AL: 0.8, IBO: 0.6, RGM: 0.4, KG: 0.5, APS: 0.7, K: -0.4, GR: 0.3, Cluster: "2" },
+            "Jawa Timur": { AL: 0.9, IBO: 0.8, RGM: 0.6, KG: 0.7, APS: 0.9, K: -0.5, GR: 0.4, Cluster: "2" },
+            "Kalimantan Barat": { AL: -0.6, IBO: -0.8, RGM: -0.3, KG: -0.5, APS: -0.6, K: 0.9, GR: 0.4, Cluster: "0" },
+            "Kalimantan Selatan": { AL: 0.2, IBO: 0.0, RGM: 0.1, KG: 0.1, APS: 0.2, K: 0.0, GR: 0.3, Cluster: "1" },
+            "Kalimantan Tengah": { AL: -0.2, IBO: -0.3, RGM: 0.0, KG: -0.1, APS: -0.2, K: 0.4, GR: 0.3, Cluster: "1" },
+            "Kalimantan Timur": { AL: 0.9, IBO: 0.7, RGM: 0.5, KG: 0.6, APS: 0.8, K: -0.4, GR: 0.5, Cluster: "2" },
+            "Kalimantan Utara": { AL: -0.4, IBO: -0.6, RGM: -0.2, KG: -0.3, APS: -0.4, K: 0.7, GR: 0.3, Cluster: "0" },
+            "Kepulauan Bangka Belitung": { AL: 0.1, IBO: -0.1, RGM: 0.1, KG: 0.0, APS: 0.1, K: 0.2, GR: 0.3, Cluster: "1" },
+            "Kepulauan Riau": { AL: 0.8, IBO: 0.6, RGM: 0.4, KG: 0.5, APS: 0.7, K: -0.3, GR: 0.4, Cluster: "2" },
+            "Lampung": { AL: -0.4, IBO: -0.6, RGM: -0.2, KG: -0.3, APS: -0.4, K: 0.7, GR: 0.3, Cluster: "0" },
+            "Maluku": { AL: -0.9, IBO: -1.1, RGM: -0.6, KG: -0.8, APS: -0.9, K: 1.3, GR: 0.5, Cluster: "0" },
+            "Maluku Utara": { AL: -1.0, IBO: -1.2, RGM: -0.7, KG: -0.9, APS: -1.0, K: 1.4, GR: 0.5, Cluster: "0" },
+            "Nusa Tenggara Barat": { AL: -0.7, IBO: -0.9, RGM: -0.4, KG: -0.6, APS: -0.7, K: 1.0, GR: 0.4, Cluster: "0" },
+            "Nusa Tenggara Timur": { AL: -1.2, IBO: -1.4, RGM: -0.9, KG: -1.1, APS: -1.2, K: 1.7, GR: 0.6, Cluster: "0" },
+            "Papua": { AL: -1.5, IBO: -1.7, RGM: -1.2, KG: -1.4, APS: -1.5, K: 2.0, GR: 0.7, Cluster: "0" },
+            "Papua Barat": { AL: -1.3, IBO: -1.5, RGM: -1.0, KG: -1.2, APS: -1.3, K: 1.8, GR: 0.6, Cluster: "0" },
+            "Riau": { AL: 0.5, IBO: 0.3, RGM: 0.2, KG: 0.3, APS: 0.5, K: -0.1, GR: 0.4, Cluster: "2" },
+            "Sulawesi Barat": { AL: -0.8, IBO: -1.0, RGM: -0.5, KG: -0.7, APS: -0.8, K: 1.1, GR: 0.4, Cluster: "0" },
+            "Sulawesi Selatan": { AL: 0.0, IBO: -0.2, RGM: 0.0, KG: -0.1, APS: 0.0, K: 0.3, GR: 0.3, Cluster: "1" },
+            "Sulawesi Tengah": { AL: -0.5, IBO: -0.7, RGM: -0.2, KG: -0.4, APS: -0.5, K: 0.8, GR: 0.3, Cluster: "1" },
+            "Sulawesi Tenggara": { AL: -0.6, IBO: -0.8, RGM: -0.3, KG: -0.5, APS: -0.6, K: 0.9, GR: 0.4, Cluster: "0" },
+            "Sulawesi Utara": { AL: 0.3, IBO: 0.1, RGM: 0.2, KG: 0.2, APS: 0.3, K: 0.0, GR: 0.3, Cluster: "1" },
+            "Sumatera Barat": { AL: 0.2, IBO: 0.0, RGM: 0.1, KG: 0.1, APS: 0.2, K: 0.0, GR: 0.3, Cluster: "1" },
+            "Sumatera Selatan": { AL: -0.2, IBO: -0.4, RGM: -0.1, KG: -0.2, APS: -0.2, K: 0.5, GR: 0.3, Cluster: "1" },
+            "Sumatera Utara": { AL: 0.1, IBO: -0.1, RGM: 0.0, KG: 0.0, APS: 0.1, K: 0.2, GR: 0.3, Cluster: "1" }
+        };
+
+        const urgentMessages = {
+            'AL': "⚡ Pemerintah harus mempercepat pembangunan infrastruktur listrik terutama di daerah terpencil, dengan memanfaatkan energi terbarukan (PLTS, mikrohidro), serta memberikan subsidi jaringan listrik perlu diarahkan agar keluarga miskin tetap mampu mengakses listrik yang stabil.",
+            'IBO': "🌐 Internet untuk Pembelajaran Online Lemah: Perluasan jaringan internet berbasis BTS dan fiber optic harus diprioritaskan, terutama di sekolah pedesaan serta menghadirkan paket data edukasi murah bagi siswa dan guru.",
+            'RGM': "👩‍🏫 Rasio Murid dan Guru SMA Tidak Seimbang: Rekrutmen dan distribusi guru perlu diperbaiki agar pemerataan lebih terjamin. Daerah dengan kekurangan guru bisa diberi program insentif, seperti tunjangan khusus atau kontrak ikatan dinas.",
+            'KG': "📚 Kualitas Guru Rendah: Pemerintah harus meningkatkan kualitas melalui pelatihan berkelanjutan (continuous professional development) berbasis teknologi. Sistem sertifikasi guru juga harus lebih menekankan pada kompetensi pedagogik dan digital.",
+            'APS': "🎓 Angka Partisipasi Sekolah (APS) SMA Rendah: Pemerintah dapat memberikan beasiswa afirmatif untuk siswa miskin, memperkuat program KIP Kuliah/KIP Sekolah, serta membangun lebih banyak SMA/SMK di daerah minim sekolah. Kampanye kesadaran pentingnya pendidikan juga perlu ditingkatkan.",
+            'K': "💸 Angka Kemiskinan Tinggi: Program perlindungan sosial (PKH, BLT, sembako) harus disinergikan dengan program pemberdayaan ekonomi, seperti pelatihan kerja, akses kredit UMKM, dan padat karya. Pendidikan vokasi bisa diarahkan agar sesuai dengan kebutuhan pasar kerja lokal.",
+            'GR': "⚖ Gini Rasio Tinggi (ketimpangan lebar): Kebijakan redistribusi harus diperkuat, misalnya melalui pajak progresif, subsidi tepat sasaran, serta pemerataan pembangunan antarwilayah. Di sisi pendidikan, harus dipastikan semua kalangan (miskin maupun kaya) mendapat akses yang setara terhadap layanan sekolah berkualitas."
+        };
+
+        const clusterInfo = {
+            "0": { name: "Tertinggal", color: "cluster-0", desc: "Kluster ini terdiri dari provinsi-provinsi yang paling membutuhkan perhatian dan intervensi, dengan nilai rendah di hampir semua indikator dasar seperti akses listrik, internet, ketersediaan guru, akses kesehatan, dan prevalensi stunting yang tinggi." },
+            "1": { name: "Menengah", color: "cluster-1", desc: "Provinsi dalam kluster ini menunjukkan kinerja yang mendekati rata-rata nasional di sebagian besar indikator, dengan keunggulan relatif pada pemerataan pendapatan." },
+            "2": { name: "Maju", color: "cluster-2", desc: "Provinsi di kluster ini memiliki akses listrik, internet, dan rasio guru yang baik, serta prevalensi stunting yang rendah, meskipun menghadapi isu ketimpangan pendapatan." }
+        };
+
+        // Model K-Means (sederhana untuk simulasi)
+        const centroids = [
+            [-1.0, -1.1, -0.7, -0.9, -1.0, 1.4, 0.5], // Cluster 0
+            [-0.1, -0.3, 0.0, -0.2, -0.1, 0.4, 0.3],  // Cluster 1
+            [0.9, 0.8, 0.6, 0.7, 0.9, -0.5, 0.4]      // Cluster 2
+        ];
+
+        const featureMeans = [-0.1, -0.3, 0.0, -0.2, -0.1, 0.4, 0.3];
+        const featureStds = [0.8, 0.9, 0.6, 0.7, 0.8, 0.9, 0.2];
+
+        // Fungsi untuk navigasi antar halaman
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // Navigasi menu
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Update kelas aktif
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Tampilkan halaman yang sesuai
+                    pages.forEach(page => page.classList.remove('active'));
+                    document.getElementById(targetPage).classList.add('active');
+                    
+                    // Sembunyikan menu mobile setelah memilih
+                    navMenu.classList.remove('show');
+                });
+            });
+            
+            // Toggle menu mobile
+            mobileMenuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // Setup halaman analisis
+            const provinsiSelect = document.getElementById('provinsi-select');
+            provinsiSelect.addEventListener('change', updateAnalysis);
+            
+            // Setup halaman prediksi
+            const predictBtn = document.getElementById('predict-btn');
+            predictBtn.addEventListener('click', predictCluster);
+            
+            // Inisialisasi halaman analisis dengan provinsi pertama
+            updateAnalysis();
+        });
+
+        // Fungsi untuk memperbarui analisis berdasarkan provinsi yang dipilih
+        function updateAnalysis() {
+            const provinsiSelect = document.getElementById('provinsi-select');
+            const selectedProvinsi = provinsiSelect.value;
+            const data = provinsiData[selectedProvinsi];
+            const resultDiv = document.getElementById('analysis-result');
+            
+            if (!data) {
+                resultDiv.innerHTML = '<div class="alert alert-danger">Data untuk provinsi ini tidak ditemukan.</div>';
+                return;
+            }
+            
+            const { AL, IBO, RGM, KG, APS, K, GR, Cluster } = data;
+            
+            // Hitung nilai dalam persentase untuk tampilan (hanya untuk visualisasi)
+            const alPercent = Math.round(((AL + 2) / 4) * 100);
+            const iboPercent = Math.round(((IBO + 2) / 4) * 100);
+            const kPercent = Math.round(((K + 2) / 4) * 30); // Kemiskinan biasanya antara 0-30%
+            const apsPercent = Math.round(((APS + 2) / 4) * 100);
+            
+            // Terapkan decision tree rules
+            const urgentVariables = [];
+            
+            if (GR <= 0.146) {
+                if (K > 2.177) {
+                    urgentVariables.push('K');
+                }
+            } else {
+                if (RGM <= -0.193) {
+                    if (APS <= -0.212) {
+                        urgentVariables.push('RGM', 'APS');
+                    } else {
+                        urgentVariables.push('RGM');
+                    }
+                } else {
+                    if (AL <= -1.542) {
+                        urgentVariables.push('AL');
+                    }
+                }
+            }
+            
+            if (GR > 0.146 && !urgentVariables.includes('GR')) {
+                urgentVariables.push('GR');
+            }
+            
+            // Bangsa HTML untuk hasil analisis
+            let html = `
+                <h3>Data Provinsi: ${selectedProvinsi}</h3>
+                <p>Akses Listrik=${AL}, IBO=${IBO}, RGM=${RGM}, KG=${KG}, APS=${APS}, K=${K}, GR=${GR}</p>
+                <div class="alert alert-success">
+                    ✅ Provinsi ${selectedProvinsi} termasuk 
+                    <span class="cluster-badge ${clusterInfo[Cluster].color}">Cluster ${Cluster} - ${clusterInfo[Cluster].name}</span>
+                </div>
+                
+                <hr>
+                
+                <h3>Statistik Provinsi</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">${alPercent}%</div>
+                        <div class="stat-label">Akses Listrik</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${iboPercent}%</div>
+                        <div class="stat-label">Internet untuk Pembelajaran Daring</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${kPercent}%</div>
+                        <div class="stat-label">Kemiskinan</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${apsPercent}%</div>
+                        <div class="stat-label">Tingkat Partisipasi Sekolah</div>
+                    </div>
+                </div>
+                
+                <h3>3 Masalah Prioritas</h3>
+            `;
+            
+            if (urgentVariables.length > 0) {
+                html += '<div class="priority-list">';
+                
+                urgentVariables.slice(0, 3).forEach((variable, index) => {
+                    html += `
+                        <div class="priority-item">
+                            <h4>${index + 1}. ${variable}</h4>
+                            <p>${urgentMessages[variable]}</p>
+                        </div>
+                    `;
+                });
+                
+                html += '</div>';
+            } else {
+                html += '<div class="alert alert-info">🎉 Tidak ada variabel urgent untuk provinsi ini.</div>';
+            }
+            
+            resultDiv.innerHTML = html;
+        }
+
+        // Fungsi untuk memprediksi cluster berdasarkan input
+        function predictCluster() {
+            // Ambil nilai input
+            const inputs = [
+                parseFloat(document.getElementById('input-al').value),
+                parseFloat(document.getElementById('input-ibo').value),
+                parseFloat(document.getElementById('input-rgm').value),
+                parseFloat(document.getElementById('input-kg').value),
+                parseFloat(document.getElementById('input-aps').value),
+                parseFloat(document.getElementById('input-k').value),
+                parseFloat(document.getElementById('input-gr').value)
+            ];
+            
+            // Validasi input
+            if (inputs.some(isNaN)) {
+                document.getElementById('prediction-result').innerHTML = `
+                    <div class="alert alert-danger">
+                        ❌ Harap isi semua nilai dengan angka yang valid.
+                    </div>
+                `;
+                return;
+            }
+            
+            // Standardisasi input
+            const scaledInputs = inputs.map((value, index) => {
+                return (value - featureMeans[index]) / featureStds[index];
+            });
+            
+            // Hitung jarak ke setiap centroid
+            const distances = centroids.map(centroid => {
+                let sum = 0;
+                for (let i = 0; i < scaledInputs.length; i++) {
+                    sum += Math.pow(scaledInputs[i] - centroid[i], 2);
+                }
+                return Math.sqrt(sum);
+            });
+            
+            // Temukan cluster dengan jarak terdekat
+            const minDistance = Math.min(...distances);
+            const predictedCluster = distances.indexOf(minDistance);
+            
+            // Hitung selisih dengan centroid terpilih
+            const centroid = centroids[predictedCluster];
+            const diffs = scaledInputs.map((value, index) => {
+                return Math.abs(value - centroid[index]);
+            });
+            
+            // Buat daftar fitur dengan selisih terbesar
+            const features = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
+            const contrib = features.map((feature, index) => {
+                return { feature, diff: diffs[index] };
+            });
+            
+            // Urutkan berdasarkan selisih (terbesar ke terkecil)
+            contrib.sort((a, b) => b.diff - a.diff);
+            
+            // Ambil top 3
+            const top3 = contrib.slice(0, 3);
+            
+            // Tampilkan hasil
+            const resultDiv = document.getElementById('prediction-result');
+            let html = `
+                <div class="alert alert-success">
+                    ✅ Data diprediksi masuk <span class="cluster-badge ${clusterInfo[predictedCluster].color}">Cluster ${predictedCluster} - ${clusterInfo[predictedCluster].name}</span>
+                </div>
+                
+                <h3>Top 3 Rekomendasi Kebijakan</h3>
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Variabel</th>
+                            <th>Selisih</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            top3.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.feature}</td>
+                        <td>${item.diff.toFixed(4)}</td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+                
+                <h3>Penjelasan Rekomendasi Kebijakan</h3>
+            `;
+            
+            top3.forEach(item => {
+                if (urgentMessages[item.feature]) {
+                    html += `
+                        <div class="alert alert-info">
+                            <strong>${item.feature}:</strong> ${urgentMessages[item.feature]}
+                        </div>
+                    `;
+                }
+            });
+            
+            resultDiv.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
