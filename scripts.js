@@ -385,7 +385,7 @@ const provinsiData = {
 const urgentMessages = {
   AL: "⚡ Pemerintah harus mempercepat pembangunan infrastruktur listrik terutama di daerah terpencil, dengan memanfaatkan energi terbarukan (PLTS, mikrohidro), serta memberikan subsidi jaringan listrik perlu diarahkan agar keluarga miskin tetap mampu mengakses listrik yang stabil.",
   IBO: "🌐 Internet untuk Pembelajaran Online Lemah: Perluasan jaringan internet berbasis BTS dan fiber optic harus diprioritaskan, terutama di sekolah pedesaan serta menghadirkan paket data edukasi murah bagi siswa dan guru.",
-  RMG: "👩‍🏫 Rasio Murid dan Guru SMA Tidak Seimbang: Rekrutmen dan distribusi guru perlu diperbaiki agar pemerataan lebih terjamin. Daerah dengan kekurangan guru bisa diberi program insentif, seperti tunjangan khusus atau kontrak ikatan dinas.",
+  RGM: "👩‍🏫 Rasio Murid dan Guru SMA Tidak Seimbang: Rekrutmen dan distribusi guru perlu diperbaiki agar pemerataan lebih terjamin. Daerah dengan kekurangan guru bisa diberi program insentif, seperti tunjangan khusus atau kontrak ikatan dinas.",
   KG: "📚 Kualitas Guru Rendah: Pemerintah harus meningkatkan kualitas melalui pelatihan berkelanjutan (continuous professional development) berbasis teknologi. Sistem sertifikasi guru juga harus lebih menekankan pada kompetensi pedagogik dan digital.",
   APS: "🎓 Angka Partisipasi Sekolah (APS) SMA Rendah: Pemerintah dapat memberikan beasiswa afirmatif untuk siswa miskin, memperkuat program KIP Kuliah/KIP Sekolah, serta membangun lebih banyak SMA/SMK di daerah minim sekolah. Kampanye kesadaran pentingnya pendidikan juga perlu ditingkatkan.",
   K: "💸 Angka Kemiskinan Tinggi: Program perlindungan sosial (PKH, BLT, sembako) harus disinergikan dengan program pemberdayaan ekonomi, seperti pelatihan kerja, akses kredit UMKM, dan padat karya. Pendidikan vokasi bisa diarahkan agar sesuai dengan kebutuhan pasar kerja lokal.",
@@ -533,6 +533,7 @@ function updateAnalysis() {
 
   let html = `
         <h3>Data Provinsi: ${selectedProvinsi}</h3>
+        <p>Akses Listrik=${AL}, IBO=${IBO}, RGM=${RGM}, KG=${KG}, APS=${APS}, K=${K}, GR=${GR}</p>
         <div class="alert alert-success">
             ✅ Provinsi ${selectedProvinsi} termasuk <span class="cluster-badge ${clusterInfo[Cluster].color}">Cluster ${Cluster} - ${clusterInfo[Cluster].name}</span>
         </div>
@@ -550,24 +551,12 @@ function updateAnalysis() {
                 <div class="stat-label">Internet untuk Pembelajaran Daring</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">${RGM}%</div>
-                <div class="stat-label">Rasio Murid-Guru</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">${KG}%</div>
-                <div class="stat-label">Kualitas Guru</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">${AP}%</div>
-                <div class="stat-label">Tingkat Partisipasi Sekolah</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-value">${K}%</div>
                 <div class="stat-label">Kemiskinan</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">${GR}%</div>
-                <div class="stat-label">Gini Rasio</div>
+                <div class="stat-value">${APS}%</div>
+                <div class="stat-label">Tingkat Partisipasi Sekolah</div>
             </div>
         </div>
         
@@ -777,4 +766,3 @@ async function loadSVGMap() {
     ).innerHTML = `<div class="alert alert-danger">❌ Gagal memuat peta. Pastikan file indonesia-map.svg tersedia.</div>`;
   }
 }
-
