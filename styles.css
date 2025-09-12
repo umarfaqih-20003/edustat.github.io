@@ -241,16 +241,16 @@ button:hover {
 }
 
 .cluster-0 {
-  background: #d4edda;
-  color: #155724;
+  background: #013c58;
+  color: white;
 }
 .cluster-1 {
-  background: #ffe6e6;
-  color: #dc3545;
+  background: #c1121f;
+  color: white;
 }
 .cluster-2 {
-  background: #e6f7ff;
-  color: #17a2b8;
+  background: #f5a201;
+  color: #333;
 }
 
 .input-grid {
@@ -387,17 +387,42 @@ footer {
 }
 
 .cluster-0 .dot {
-  background-color: var(--success);
+  background-color: #013c58;
 }
 .cluster-1 .dot {
-  background-color: var(--danger);
+  background-color: #c1121f;
 }
 .cluster-2 .dot {
-  background-color: var(--info);
+  background-color: #f5a201;
 }
 
 .tooltip.visible {
   opacity: 1;
+}
+
+/* Legend Styles */
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.legend-label {
+  font-size: 0.9rem;
 }
 
 /* Index Section */
@@ -424,4 +449,15 @@ footer {
 }
 .index-card p {
   text-align: justify;
+}
+
+/* Warna untuk provinsi di peta */
+#svg-map-placeholder svg path.cluster-0 {
+  fill: #013c58;
+}
+#svg-map-placeholder svg path.cluster-1 {
+  fill: #c1121f;
+}
+#svg-map-placeholder svg path.cluster-2 {
+  fill: #f5a201;
 }
