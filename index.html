@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduStat - Analisis Data Pendidikan</title>
     <style>
+        /* CSS tetap sama seperti sebelumnya */
         :root {
             --primary: #4a6fa5;
             --secondary: #166088;
@@ -243,9 +244,9 @@
             margin-left: 0.5rem;
         }
         
-        .cluster-0 { background: #ffe6e6; color: #dc3545; }
-        .cluster-1 { background: #e6f7ff; color: #17a2b8; }
-        .cluster-2 { background: #d4edda; color: #155724; }
+        .cluster-0 { background: #d4edda; color: #155724; }
+        .cluster-1 { background: #ffe6e6; color: #dc3545; }
+        .cluster-2 { background: #e6f7ff; color: #17a2b8; }
         
         .input-grid {
             display: grid;
@@ -387,45 +388,44 @@
                     <div class="input-group">
                         <label for="provinsi-select">Pilih Provinsi:</label>
                         <select id="provinsi-select">
-                            <option value="Aceh">Aceh</option>
-                            <option value="Bali">Bali</option>
-                            <option value="Banten">Banten</option>
-                            <option value="Bengkulu">Bengkulu</option>
-                            <option value="DI Yogyakarta">DI Yogyakarta</option>
-                            <option value="DKI Jakarta">DKI Jakarta</option>
-                            <option value="Gorontalo">Gorontalo</option>
-                            <option value="Jambi">Jambi</option>
-                            <option value="Jawa Barat">Jawa Barat</option>
-                            <option value="Jawa Tengah">Jawa Tengah</option>
-                            <option value="Jawa Timur">Jawa Timur</option>
-                            <option value="Kalimantan Barat">Kalimantan Barat</option>
-                            <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                            <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                            <option value="Kalimantan Timur">Kalimantan Timur</option>
-                            <option value="Kalimantan Utara">Kalimantan Utara</option>
-                            <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
-                            <option value="Kepulauan Riau">Kepulauan Riau</option>
-                            <option value="Lampung">Lampung</option>
-                            <option value="Maluku">Maluku</option>
-                            <option value="Maluku Utara">Maluku Utara</option>
-                            <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
-                            <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
-                            <option value="Papua">Papua</option>
-                            <option value="Papua Barat">Papua Barat</option>
-                            <!-- Tambahan provinsi hasil pemekaran Papua -->
-                            <option value="Papua Selatan">Papua Selatan</option>
-                            <option value="Papua Tengah">Papua Tengah</option>
-                            <option value="Papua Pegunungan">Papua Pegunungan</option>
-                            <option value="Papua Barat Daya">Papua Barat Daya</option>
-                            <option value="Riau">Riau</option>
-                            <option value="Sulawesi Barat">Sulawesi Barat</option>
-                            <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                            <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                            <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                            <option value="Sulawesi Utara">Sulawesi Utara</option>
-                            <option value="Sumatera Barat">Sumatera Barat</option>
-                            <option value="Sumatera Selatan">Sumatera Selatan</option>
-                            <option value="Sumatera Utara">Sumatera Utara</option>
+                            <option value="ACEH">Aceh</option>
+                            <option value="SUMATERA UTARA">Sumatera Utara</option>
+                            <option value="SUMATERA BARAT">Sumatera Barat</option>
+                            <option value="RIAU">Riau</option>
+                            <option value="JAMBI">Jambi</option>
+                            <option value="SUMATERA SELATAN">Sumatera Selatan</option>
+                            <option value="BENGKULU">Bengkulu</option>
+                            <option value="LAMPUNG">Lampung</option>
+                            <option value="KEP. BANGKA BELITUNG">Kep. Bangka Belitung</option>
+                            <option value="KEP. RIAU">Kep. Riau</option>
+                            <option value="DKI JAKARTA">DKI Jakarta</option>
+                            <option value="JAWA BARAT">Jawa Barat</option>
+                            <option value="JAWA TENGAH">Jawa Tengah</option>
+                            <option value="DI YOGYAKARTA">DI Yogyakarta</option>
+                            <option value="JAWA TIMUR">Jawa Timur</option>
+                            <option value="BANTEN">Banten</option>
+                            <option value="BALI">Bali</option>
+                            <option value="NUSA TENGGARA BARAT">Nusa Tenggara Barat</option>
+                            <option value="NUSA TENGGARA TIMUR">Nusa Tenggara Timur</option>
+                            <option value="KALIMANTAN BARAT">Kalimantan Barat</option>
+                            <option value="KALIMANTAN TENGAH">Kalimantan Tengah</option>
+                            <option value="KALIMANTAN SELATAN">Kalimantan Selatan</option>
+                            <option value="KALIMANTAN TIMUR">Kalimantan Timur</option>
+                            <option value="KALIMANTAN UTARA">Kalimantan Utara</option>
+                            <option value="SULAWESI UTARA">Sulawesi Utara</option>
+                            <option value="SULAWESI TENGAH">Sulawesi Tengah</option>
+                            <option value="SULAWESI SELATAN">Sulawesi Selatan</option>
+                            <option value="SULAWESI TENGGARA">Sulawesi Tenggara</option>
+                            <option value="GORONTALO">Gorontalo</option>
+                            <option value="SULAWESI BARAT">Sulawesi Barat</option>
+                            <option value="MALUKU">Maluku</option>
+                            <option value="MALUKU UTARA">Maluku Utara</option>
+                            <option value="PAPUA BARAT">Papua Barat</option>
+                            <option value="PAPUA BARAT DAYA">Papua Barat Daya</option>
+                            <option value="PAPUA">Papua</option>
+                            <option value="PAPUA SELATAN">Papua Selatan</option>
+                            <option value="PAPUA TENGAH">Papua Tengah</option>
+                            <option value="PAPUA PEGUNUNGAN">Papua Pegunungan</option>
                         </select>
                     </div>
                     
@@ -503,49 +503,111 @@
     </footer>
 
     <script>
-        // Data untuk aplikasi
+        // Data dari dataset Excel yang diberikan
         const provinsiData = {
-            "Aceh": { AL: -0.8, IBO: -0.5, RGM: 0.2, KG: -0.3, APS: -0.6, K: 1.2, GR: 0.4, Cluster: "1" },
-            "Bali": { AL: 1.2, IBO: 1.5, RGM: 0.8, KG: 1.1, APS: 1.3, K: -0.9, GR: 0.2, Cluster: "2" },
-            "Banten": { AL: 0.9, IBO: 0.7, RGM: 0.5, KG: 0.6, APS: 0.8, K: -0.3, GR: 0.5, Cluster: "2" },
-            "Bengkulu": { AL: -0.5, IBO: -0.7, RGM: -0.2, KG: -0.4, APS: -0.5, K: 0.8, GR: 0.3, Cluster: "1" },
-            "DI Yogyakarta": { AL: 1.1, IBO: 1.3, RGM: 1.0, KG: 1.2, APS: 1.4, K: -1.0, GR: 0.1, Cluster: "2" },
-            "DKI Jakarta": { AL: 1.8, IBO: 1.9, RGM: 1.5, KG: 1.7, APS: 1.8, K: -1.5, GR: 0.6, Cluster: "2" },
-            "Gorontalo": { AL: -0.7, IBO: -0.9, RGM: -0.4, KG: -0.6, APS: -0.7, K: 1.0, GR: 0.4, Cluster: "0" },
-            "Jambi": { AL: -0.3, IBO: -0.4, RGM: 0.0, KG: -0.2, APS: -0.3, K: 0.5, GR: 0.3, Cluster: "1" },
-            "Jawa Barat": { AL: 0.7, IBO: 0.5, RGM: 0.3, KG: 0.4, APS: 0.6, K: -0.2, GR: 0.4, Cluster: "2" },
-            "Jawa Tengah": { AL: 0.8, IBO: 0.6, RGM: 0.4, KG: 0.5, APS: 0.7, K: -0.4, GR: 0.3, Cluster: "2" },
-            "Jawa Timur": { AL: 0.9, IBO: 0.8, RGM: 0.6, KG: 0.7, APS: 0.9, K: -0.5, GR: 0.4, Cluster: "2" },
-            "Kalimantan Barat": { AL: -0.6, IBO: -0.8, RGM: -0.3, KG: -0.5, APS: -0.6, K: 0.9, GR: 0.4, Cluster: "0" },
-            "Kalimantan Selatan": { AL: 0.2, IBO: 0.0, RGM: 0.1, KG: 0.1, APS: 0.2, K: 0.0, GR: 0.3, Cluster: "1" },
-            "Kalimantan Tengah": { AL: -0.2, IBO: -0.3, RGM: 0.0, KG: -0.1, APS: -0.2, K: 0.4, GR: 0.3, Cluster: "1" },
-            "Kalimantan Timur": { AL: 0.9, IBO: 0.7, RGM: 0.5, KG: 0.6, APS: 0.8, K: -0.4, GR: 0.5, Cluster: "2" },
-            "Kalimantan Utara": { AL: -0.4, IBO: -0.6, RGM: -0.2, KG: -0.3, APS: -0.4, K: 0.7, GR: 0.3, Cluster: "0" },
-            "Kepulauan Bangka Belitung": { AL: 0.1, IBO: -0.1, RGM: 0.1, KG: 0.0, APS: 0.1, K: 0.2, GR: 0.3, Cluster: "1" },
-            "Kepulauan Riau": { AL: 0.8, IBO: 0.6, RGM: 0.4, KG: 0.5, APS: 0.7, K: -0.3, GR: 0.4, Cluster: "2" },
-            "Lampung": { AL: -0.4, IBO: -0.6, RGM: -0.2, KG: -0.3, APS: -0.4, K: 0.7, GR: 0.3, Cluster: "0" },
-            "Maluku": { AL: -0.9, IBO: -1.1, RGM: -0.6, KG: -0.8, APS: -0.9, K: 1.3, GR: 0.5, Cluster: "0" },
-            "Maluku Utara": { AL: -1.0, IBO: -1.2, RGM: -0.7, KG: -0.9, APS: -1.0, K: 1.4, GR: 0.5, Cluster: "0" },
-            "Nusa Tenggara Barat": { AL: -0.7, IBO: -0.9, RGM: -0.4, KG: -0.6, APS: -0.7, K: 1.0, GR: 0.4, Cluster: "0" },
-            "Nusa Tenggara Timur": { AL: -1.2, IBO: -1.4, RGM: -0.9, KG: -1.1, APS: -1.2, K: 1.7, GR: 0.6, Cluster: "0" },
-            "Papua": { AL: -1.5, IBO: -1.7, RGM: -1.2, KG: -1.4, APS: -1.5, K: 2.0, GR: 0.7, Cluster: "0" },
-            "Papua Barat": { AL: -1.3, IBO: -1.5, RGM: -1.0, KG: -1.2, APS: -1.3, K: 1.8, GR: 0.6, Cluster: "0" },
-            // Entri baru — pemekaran provinsi di Papua
-            "Papua Selatan": { AL: -1.4, IBO: -1.6, RGM: -1.1, KG: -1.3, APS: -1.4, K: 1.9, GR: 0.6, Cluster: "0" },
-            "Papua Tengah": { AL: -1.35, IBO: -1.55, RGM: -1.05, KG: -1.25, APS: -1.35, K: 1.85, GR: 0.6, Cluster: "0" },
-            "Papua Pegunungan": { AL: -1.45, IBO: -1.65, RGM: -1.15, KG: -1.35, APS: -1.45, K: 1.95, GR: 0.7, Cluster: "0" },
-            "Papua Barat Daya": { AL: -1.25, IBO: -1.45, RGM: -0.95, KG: -1.15, APS: -1.25, K: 1.7, GR: 0.6, Cluster: "0" },
-            "Riau": { AL: 0.5, IBO: 0.3, RGM: 0.2, KG: 0.3, APS: 0.5, K: -0.1, GR: 0.4, Cluster: "2" },
-            "Sulawesi Barat": { AL: -0.8, IBO: -1.0, RGM: -0.5, KG: -0.7, APS: -0.8, K: 1.1, GR: 0.4, Cluster: "0" },
-            "Sulawesi Selatan": { AL: 0.0, IBO: -0.2, RGM: 0.0, KG: -0.1, APS: 0.0, K: 0.3, GR: 0.3, Cluster: "1" },
-            "Sulawesi Tengah": { AL: -0.5, IBO: -0.7, RGM: -0.2, KG: -0.4, APS: -0.5, K: 0.8, GR: 0.3, Cluster: "1" },
-            "Sulawesi Tenggara": { AL: -0.6, IBO: -0.8, RGM: -0.3, KG: -0.5, APS: -0.6, K: 0.9, GR: 0.4, Cluster: "0" },
-            "Sulawesi Utara": { AL: 0.3, IBO: 0.1, RGM: 0.2, KG: 0.2, APS: 0.3, K: 0.0, GR: 0.3, Cluster: "1" },
-            "Sumatera Barat": { AL: 0.2, IBO: 0.0, RGM: 0.1, KG: 0.1, APS: 0.2, K: 0.0, GR: 0.3, Cluster: "1" },
-            "Sumatera Selatan": { AL: -0.2, IBO: -0.4, RGM: -0.1, KG: -0.2, APS: -0.2, K: 0.5, GR: 0.3, Cluster: "1" },
-            "Sumatera Utara": { AL: 0.1, IBO: -0.1, RGM: 0.0, KG: 0.0, APS: 0.1, K: 0.2, GR: 0.3, Cluster: "1" }
+            "ACEH": { AL: 62.93, IBO: 7.53, RGM: 9.79, KG: 99.22, APS: 81.55, K: 12.64, GR: 0.294, Cluster: "2" },
+            "SUMATERA UTARA": { AL: 74.15, IBO: 8.04, RGM: 13.98, KG: 98.92, APS: 78.59, K: 7.19, GR: 0.306, Cluster: "2" },
+            "SUMATERA BARAT": { AL: 74.59, IBO: 9.38, RGM: 13.78, KG: 98.46, APS: 84.4, K: 5.42, GR: 0.287, Cluster: "2" },
+            "RIAU": { AL: 77.68, IBO: 9.19, RGM: 12.83, KG: 98.56, APS: 78.49, K: 6.36, GR: 0.306, Cluster: "2" },
+            "JAMBI": { AL: 71.76, IBO: 9.46, RGM: 12.44, KG: 98.47, APS: 71.97, K: 7.26, GR: 0.315, Cluster: "2" },
+            "SUMATERA SELATAN": { AL: 70.54, IBO: 9.75, RGM: 12.33, KG: 96.95, APS: 70.8, K: 10.51, GR: 0.331, Cluster: "2" },
+            "BENGKULU": { AL: 70.72, IBO: 8.19, RGM: 12.76, KG: 98.23, APS: 79.07, K: 12.52, GR: 0.343, Cluster: "2" },
+            "LAMPUNG": { AL: 73.37, IBO: 9.52, RGM: 14.26, KG: 98.63, APS: 72.35, K: 10.62, GR: 0.301, Cluster: "2" },
+            "KEP. BANGKA BELITUNG": { AL: 76.06, IBO: 8.92, RGM: 17.21, KG: 98.62, APS: 72.69, K: 5.08, GR: 0.235, Cluster: "0" },
+            "KEP. RIAU": { AL: 89.26, IBO: 10.41, RGM: 15.14, KG: 98.55, APS: 85.56, K: 4.78, GR: 0.357, Cluster: "0" },
+            "DKI JAKARTA": { AL: 87.84, IBO: 11.21, RGM: 15.5, KG: 98.62, APS: 79.95, K: 4.14, GR: 0.431, Cluster: "0" },
+            "JAWA BARAT": { AL: 76.62, IBO: 11.41, RGM: 19.04, KG: 98.45, APS: 71.15, K: 7.08, GR: 0.428, Cluster: "0" },
+            "JAWA TENGAH": { AL: 73.15, IBO: 9.1, RGM: 17.33, KG: 99.02, APS: 71.6, K: 9.58, GR: 0.364, Cluster: "0" },
+            "DI YOGYAKARTA": { AL: 80.1, IBO: 10.52, RGM: 14.08, KG: 98.61, APS: 90.36, K: 10.4, GR: 0.428, Cluster: "0" },
+            "JAWA TIMUR": { AL: 69.36, IBO: 10.51, RGM: 15.76, KG: 98.84, APS: 76.44, K: 9.56, GR: 0.373, Cluster: "0" },
+            "BANTEN": { AL: 75.17, IBO: 10.99, RGM: 16.55, KG: 98.48, APS: 71.91, K: 5.7, GR: 0.359, Cluster: "0" },
+            "BALI": { AL: 77.56, IBO: 10.61, RGM: 16.35, KG: 98.87, APS: 85.17, K: 3.8, GR: 0.348, Cluster: "0" },
+            "NUSA TENGGARA BARAT": { AL: 68.52, IBO: 9.54, RGM: 12.97, KG: 98.41, APS: 77.81, K: 11.91, GR: 0.364, Cluster: "2" },
+            "NUSA TENGGARA TIMUR": { AL: 54.84, IBO: 8.79, RGM: 14.91, KG: 98.02, APS: 75.75, K: 19.02, GR: 0.316, Cluster: "2" },
+            "KALIMANTAN BARAT": { AL: 71.57, IBO: 7.48, RGM: 15.41, KG: 98.13, APS: 69.39, K: 6.25, GR: 0.314, Cluster: "2" },
+            "KALIMANTAN TENGAH": { AL: 75.23, IBO: 7.88, RGM: 12.7, KG: 98.16, APS: 68.33, K: 5.26, GR: 0.304, Cluster: "2" },
+            "KALIMANTAN SELATAN": { AL: 74.82, IBO: 9.13, RGM: 13.54, KG: 98.73, APS: 72.31, K: 4.02, GR: 0.298, Cluster: "2" },
+            "KALIMANTAN TIMUR": { AL: 84.44, IBO: 8.55, RGM: 15.26, KG: 98.77, APS: 81.84, K: 5.51, GR: 0.31, Cluster: "2" },
+            "KALIMANTAN UTARA": { AL: 77.44, IBO: 9.07, RGM: 14.05, KG: 98.28, APS: 78.89, K: 5.38, GR: 0.259, Cluster: "2" },
+            "SULAWESI UTARA": { AL: 68.44, IBO: 10.23, RGM: 12.82, KG: 99.25, APS: 72.48, K: 6.7, GR: 0.347, Cluster: "2" },
+            "SULAWESI TENGAH": { AL: 62.44, IBO: 8.87, RGM: 14.23, KG: 98.74, APS: 74.16, K: 11.04, GR: 0.309, Cluster: "2" },
+            "SULAWESI SELATAN": { AL: 70.1, IBO: 12.21, RGM: 15.07, KG: 98.61, APS: 73.17, K: 7.77, GR: 0.36, Cluster: "2" },
+            "SULAWESI TENGGARA": { AL: 70.36, IBO: 8.64, RGM: 13.99, KG: 98.72, APS: 75.73, K: 10.63, GR: 0.365, Cluster: "2" },
+            "GORONTALO": { AL: 65.92, IBO: 7.48, RGM: 15.27, KG: 98.91, APS: 72.7, K: 13.87, GR: 0.413, Cluster: "2" },
+            "SULAWESI BARAT": { AL: 66.64, IBO: 8.38, RGM: 12.83, KG: 98.82, APS: 72.09, K: 10.71, GR: 0.33, Cluster: "2" },
+            "MALUKU": { AL: 59.96, IBO: 7.8, RGM: 14.37, KG: 98.84, APS: 77.7, K: 15.78, GR: 0.291, Cluster: "2" },
+            "MALUKU UTARA": { AL: 59.17, IBO: 6.96, RGM: 11.86, KG: 98.65, APS: 76.02, K: 6.03, GR: 0.296, Cluster: "2" },
+            "PAPUA BARAT": { AL: 62.96, IBO: 6.38, RGM: 13.14, KG: 98.25, APS: 75.32, K: 21.09, GR: 0.385, Cluster: "2" },
+            "PAPUA BARAT DAYA": { AL: 65.75, IBO: 6.32, RGM: 13.73, KG: 98.77, APS: 81.14, K: 16.95, GR: 0.347, Cluster: "2" },
+            "PAPUA": { AL: 62.24, IBO: 9.24, RGM: 14.84, KG: 98.46, APS: 80.38, K: 18.09, GR: 0.405, Cluster: "0" },
+            "PAPUA SELATAN": { AL: 48.44, IBO: 6.45, RGM: 13.96, KG: 97.44, APS: 71.68, K: 19.35, GR: 0.424, Cluster: "1" },
+            "PAPUA TENGAH": { AL: 28.71, IBO: 5.27, RGM: 15.49, KG: 98.09, APS: 47.65, K: 27.6, GR: 0.355, Cluster: "1" },
+            "PAPUA PEGUNUNGAN": { AL: 6.76, IBO: 3.04, RGM: 16.48, KG: 96.55, APS: 56.09, K: 29.66, GR: 0.346, Cluster: "1" }
         };
 
+        // Menghitung mean dan std dari data asli
+        const calculateStats = () => {
+            const features = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
+            const means = {};
+            const stds = {};
+            
+            features.forEach(feature => {
+                const values = Object.values(provinsiData).map(p => p[feature]);
+                means[feature] = values.reduce((a, b) => a + b, 0) / values.length;
+                stds[feature] = Math.sqrt(values.map(x => Math.pow(x - means[feature], 2)).reduce((a, b) => a + b, 0) / values.length);
+            });
+            
+            return { means, stds };
+        };
+
+        const { means, stds } = calculateStats();
+        
+        // Standardisasi data
+        const standardizeData = (data) => {
+            const standardized = {};
+            Object.keys(data).forEach(provinsi => {
+                standardized[provinsi] = {};
+                Object.keys(data[provinsi]).forEach(feature => {
+                    if (feature !== 'Cluster') {
+                        standardized[provinsi][feature] = (data[provinsi][feature] - means[feature]) / stds[feature];
+                    } else {
+                        standardized[provinsi][feature] = data[provinsi][feature];
+                    }
+                });
+            });
+            return standardized;
+        };
+
+        const standardizedData = standardizeData(provinsiData);
+
+        // Menghitung centroid untuk setiap cluster
+        const calculateCentroids = () => {
+            const features = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
+            const centroids = {
+                '0': Array(features.length).fill(0),
+                '1': Array(features.length).fill(0),
+                '2': Array(features.length).fill(0)
+            };
+            const counts = { '0': 0, '1': 0, '2': 0 };
+            
+            Object.values(standardizedData).forEach(provinsi => {
+                const cluster = provinsi.Cluster;
+                counts[cluster]++;
+                features.forEach((feature, idx) => {
+                    centroids[cluster][idx] += provinsi[feature];
+                });
+            });
+            
+            // Hitung rata-rata
+            Object.keys(centroids).forEach(cluster => {
+                centroids[cluster] = centroids[cluster].map(val => val / counts[cluster]);
+            });
+            
+            return centroids;
+        };
+
+        const centroids = calculateCentroids();
+        
         const urgentMessages = {
             'AL': "⚡ Pemerintah harus mempercepat pembangunan infrastruktur listrik terutama di daerah terpencil, dengan memanfaatkan energi terbarukan (PLTS, mikrohidro), serta memberikan subsidi jaringan listrik perlu diarahkan agar keluarga miskin tetap mampu mengakses listrik yang stabil.",
             'IBO': "🌐 Internet untuk Pembelajaran Online Lemah: Perluasan jaringan internet berbasis BTS dan fiber optic harus diprioritaskan, terutama di sekolah pedesaan serta menghadirkan paket data edukasi murah bagi siswa dan guru.",
@@ -557,20 +619,10 @@
         };
 
         const clusterInfo = {
-            "0": { name: "Tertinggal", color: "cluster-0", desc: "Kluster ini terdiri dari provinsi-provinsi yang paling membutuhkan perhatian dan intervensi, dengan nilai rendah di hampir semua indikator dasar seperti akses listrik, internet, ketersediaan guru, akses kesehatan, dan prevalensi stunting yang tinggi." },
-            "1": { name: "Menengah", color: "cluster-1", desc: "Provinsi dalam kluster ini menunjukkan kinerja yang mendekati rata-rata nasional di sebagian besar indikator, dengan keunggulan relatif pada pemerataan pendapatan." },
-            "2": { name: "Maju", color: "cluster-2", desc: "Provinsi di kluster ini memiliki akses listrik, internet, dan rasio guru yang baik, serta prevalensi stunting yang rendah, meskipun menghadapi isu ketimpangan pendapatan." }
+            "0": { name: "Maju", color: "cluster-0", desc: "Provinsi dengan akses listrik, internet, dan rasio guru yang baik, serta prevalensi kemiskinan yang rendah." },
+            "1": { name: "Tertinggal", color: "cluster-1", desc: "Provinsi dengan nilai rendah di hampir semua indikator dasar seperti akses listrik, internet, ketersediaan guru, dan prevalensi kemiskinan yang tinggi." },
+            "2": { name: "Menengah", color: "cluster-2", desc: "Provinsi dengan kinerja yang mendekati rata-rata nasional di sebagian besar indikator." }
         };
-
-        // Model K-Means (sederhana untuk simulasi)
-        const centroids = [
-            [-1.0, -1.1, -0.7, -0.9, -1.0, 1.4, 0.5], // Cluster 0
-            [-0.1, -0.3, 0.0, -0.2, -0.1, 0.4, 0.3],  // Cluster 1
-            [0.9, 0.8, 0.6, 0.7, 0.9, -0.5, 0.4]      // Cluster 2
-        ];
-
-        const featureMeans = [-0.1, -0.3, 0.0, -0.2, -0.1, 0.4, 0.3];
-        const featureStds = [0.8, 0.9, 0.6, 0.7, 0.8, 0.9, 0.2];
 
         // Fungsi untuk navigasi antar halaman
         document.addEventListener('DOMContentLoaded', function() {
@@ -630,37 +682,6 @@
             
             const { AL, IBO, RGM, KG, APS, K, GR, Cluster } = data;
             
-            // Hitung nilai dalam persentase untuk tampilan (hanya untuk visualisasi)
-            const alPercent = Math.round(((AL + 2) / 4) * 100);
-            const iboPercent = Math.round(((IBO + 2) / 4) * 100);
-            const kPercent = Math.round(((K + 2) / 4) * 30); // Kemiskinan biasanya antara 0-30%
-            const apsPercent = Math.round(((APS + 2) / 4) * 100);
-            
-            // Terapkan decision tree rules
-            const urgentVariables = [];
-            
-            if (GR <= 0.146) {
-                if (K > 2.177) {
-                    urgentVariables.push('K');
-                }
-            } else {
-                if (RGM <= -0.193) {
-                    if (APS <= -0.212) {
-                        urgentVariables.push('RGM', 'APS');
-                    } else {
-                        urgentVariables.push('RGM');
-                    }
-                } else {
-                    if (AL <= -1.542) {
-                        urgentVariables.push('AL');
-                    }
-                }
-            }
-            
-            if (GR > 0.146 && !urgentVariables.includes('GR')) {
-                urgentVariables.push('GR');
-            }
-            
             // Bangsa HTML untuk hasil analisis
             let html = `
                 <h3>Data Provinsi: ${selectedProvinsi}</h3>
@@ -675,33 +696,44 @@
                 <h3>Statistik Provinsi</h3>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">${alPercent}%</div>
+                        <div class="stat-value">${AL}%</div>
                         <div class="stat-label">Akses Listrik</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">${iboPercent}%</div>
+                        <div class="stat-value">${IBO}%</div>
                         <div class="stat-label">Internet untuk Pembelajaran Daring</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">${kPercent}%</div>
+                        <div class="stat-value">${K}%</div>
                         <div class="stat-label">Kemiskinan</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">${apsPercent}%</div>
+                        <div class="stat-value">${APS}%</div>
                         <div class="stat-label">Tingkat Partisipasi Sekolah</div>
                     </div>
                 </div>
                 
-                <h3>3 Masalah Prioritas</h3>
+                <h3>Analisis dan Rekomendasi</h3>
             `;
             
-            if (urgentVariables.length > 0) {
+            // Analisis berdasarkan nilai-nilai
+            const recommendations = [];
+            
+            if (AL < 60) recommendations.push('AL');
+            if (IBO < 7) recommendations.push('IBO');
+            if (RGM < 10) recommendations.push('RGM');
+            if (KG < 97) recommendations.push('KG');
+            if (APS < 70) recommendations.push('APS');
+            if (K > 15) recommendations.push('K');
+            if (GR > 0.35) recommendations.push('GR');
+            
+            if (recommendations.length > 0) {
                 html += '<div class="priority-list">';
                 
-                urgentVariables.slice(0, 3).forEach((variable, index) => {
+                recommendations.slice(0, 3).forEach((variable, index) => {
                     html += `
                         <div class="priority-item">
-                            <h4>${index + 1}. ${variable}</h4>
+                            <h4>${index + 1}. Prioritas Perbaikan: ${variable}</h4>
                             <p>${urgentMessages[variable]}</p>
                         </div>
                     `;
@@ -709,7 +741,7 @@
                 
                 html += '</div>';
             } else {
-                html += '<div class="alert alert-info">🎉 Tidak ada variabel urgent untuk provinsi ini.</div>';
+                html += '<div class="alert alert-info">🎉 Provinsi ini memiliki performa yang baik di semua indikator.</div>';
             }
             
             resultDiv.innerHTML = html;
@@ -739,22 +771,32 @@
             }
             
             // Standardisasi input
+            const features = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
             const scaledInputs = inputs.map((value, index) => {
-                return (value - featureMeans[index]) / featureStds[index];
+                const feature = features[index];
+                return (value - means[feature]) / stds[feature];
             });
             
             // Hitung jarak ke setiap centroid
-            const distances = centroids.map(centroid => {
+            const distances = {};
+            Object.keys(centroids).forEach(cluster => {
                 let sum = 0;
                 for (let i = 0; i < scaledInputs.length; i++) {
-                    sum += Math.pow(scaledInputs[i] - centroid[i], 2);
+                    sum += Math.pow(scaledInputs[i] - centroids[cluster][i], 2);
                 }
-                return Math.sqrt(sum);
+                distances[cluster] = Math.sqrt(sum);
             });
             
             // Temukan cluster dengan jarak terdekat
-            const minDistance = Math.min(...distances);
-            const predictedCluster = distances.indexOf(minDistance);
+            let minDistance = Infinity;
+            let predictedCluster = null;
+            
+            Object.keys(distances).forEach(cluster => {
+                if (distances[cluster] < minDistance) {
+                    minDistance = distances[cluster];
+                    predictedCluster = cluster;
+                }
+            });
             
             // Hitung selisih dengan centroid terpilih
             const centroid = centroids[predictedCluster];
@@ -763,8 +805,8 @@
             });
             
             // Buat daftar fitur dengan selisih terbesar
-            const features = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
-            const contrib = features.map((feature, index) => {
+            const featureNames = ['AL', 'IBO', 'RGM', 'KG', 'APS', 'K', 'GR'];
+            const contrib = featureNames.map((feature, index) => {
                 return { feature, diff: diffs[index] };
             });
             
@@ -786,7 +828,7 @@
                     <thead>
                         <tr>
                             <th>Variabel</th>
-                            <th>Selisih</th>
+                            <th>Tingkat Prioritas</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -796,7 +838,7 @@
                 html += `
                     <tr>
                         <td>${item.feature}</td>
-                        <td>${item.diff.toFixed(4)}</td>
+                        <td>${(item.diff * 100).toFixed(2)}%</td>
                     </tr>
                 `;
             });
